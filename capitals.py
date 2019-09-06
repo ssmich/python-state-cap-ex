@@ -1,3 +1,7 @@
+import random
+
+
+
 # an array of state dictionaries
 states = [
 {
@@ -151,3 +155,49 @@ states = [
     "name": "Wyoming",
     "capital": "Cheyenne"
 }]
+
+print("Welcome to Name that State Capital!")
+#print(states)
+#print
+#input
+#for loop
+#sorted
+#random.shuffle()
+
+random.shuffle(states)
+# check list is randomized
+
+
+#first example
+def game():
+    for k in range(len(states)):
+        states[k]['wrong'] = 0
+        states[k]['times'] = 0
+    def play():
+        random.shuffle(states)
+        lambda: sorted(states, states['wrong'])
+        # Maybe put this sorted in the for loop?
+        correct_score = 0
+        incorrect_score = 0
+        for i in range(0, 5): 
+            answer = input('What is the capital of ' + states[i]['name'] + '? ' )
+            if answer == states[i]['capital']:
+                print('Correct')
+                correct_score += 1
+                states[i]['times'] +=1
+                print('Your total CORRECT score is ' + str(correct_score))
+                print('Your total INCORRECT score is ' + str(incorrect_score))
+                print('You have gotten ' + states[i]['name'] + ' wrong ' + str(states[i]['wrong']) + ' out of ' + str(states[i]['times']) + 'times.')
+            else:
+                print('Wrong')
+                incorrect_score -= 1
+                states[i]['wrong'] += 1
+                states[i]['times'] += 1
+                print('Your total CORRECT score is ' + str(correct_score))
+                print('Your total INCORRECT score is ' + str(incorrect_score))
+                print('You have gotten ' + states[i]['name'] + ' wrong ' + str(states[i]['wrong']) + ' out of ' + str(states[i]['times']) + 'times.')
+        again = input('Do you want to play again? ')
+        if again == 'Yes' or again == 'yes':
+            play()
+    play()       
+game()
